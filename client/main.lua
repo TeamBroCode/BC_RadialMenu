@@ -21,6 +21,8 @@ local function convert(tbl)
             action = function() TriggerEvent(tbl.event, tbl.arg or nil) end
         elseif tbl.type == 'server' then
             action = function() TriggerServerEvent(tbl.event, tbl.arg or nil) end
+        elseif tbl.type == 'command' then
+            action = function() ExecuteCommand(tbl.event) end
         end
     elseif tbl.action then
         action = tbl.action(tbl.arg)
